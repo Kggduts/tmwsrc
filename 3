@@ -1,0 +1,36 @@
+local rs = game:GetService("ReplicatedStorage")
+local hit = rs.EnemyGetHit
+
+-- Load Orion Library
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
+
+-- Create the window
+local Window = OrionLib:MakeWindow({
+    Name = "My Orion UI",
+    HidePremium = false,
+    SaveConfig = true,
+    ConfigFolder = "OrionConfig"
+})
+
+-- Create a tab
+local Tab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a toggle
+Tab:AddToggle({
+    Name = "Enable Feature",
+    Default = false,
+    Callback = function(dame)
+        dame = for _, enemy in ipairs(game.Workspace.Enemies.dungeon:GetChildren()) do
+            hit:FireServer(enemy, 100, true, "item6_rarity1")
+        end
+    end
+})
+    end
+})
+
+-- Initialize UI
+OrionLib:Init()
