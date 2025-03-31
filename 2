@@ -7,7 +7,7 @@ local Window = Rayfield:CreateWindow({
    Name = "Rayfield Example Window",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
    LoadingTitle = "Rayfield Interface Suite",
-   LoadingSubtitle = "by Sirius",
+   LoadingSubtitle = "by nguyzn",
    Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
    DisableRayfieldPrompts = false,
@@ -40,14 +40,14 @@ local Window = Rayfield:CreateWindow({
 local Tab = Window:CreateTab("Tab", 4483362458) -- Title, Image
 
 local Toggle = Tab:CreateToggle({
-   Name = "Toggle Example",
+   Name = "Auto Kill",
    CurrentValue = false,
    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(bool)
        _G.kill = bool
         while _G.kill do
             for _, enemy in ipairs(game.Workspace.Enemies.dungeon:GetChildren()) do
-                hit:FireServer(enemy, 100, true, "item6_rarity1")
+                hit:FireServer(enemy, 10000, true, "item6_rarity1")
             end
             wait(0.1)
         end
