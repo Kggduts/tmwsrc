@@ -1,3 +1,6 @@
+local rs = game:GetService("ReplicatedStorage")
+local hit = rs.EnemyGetHit
+
 -- Create a basic window with common elements
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
 
@@ -16,17 +19,26 @@ local LeftGroupbox = MainTab:AddLeftGroupbox("Features")
 
 -- Add toggles, buttons, sliders
 local MyToggle = LeftGroupbox:AddToggle("MyToggle", {
-    Text = "Enable Feature",
+    Text = "Auto Kill Mob",
     Default = false,
     Tooltip = "Enables the main feature",
-    Callback = function(Value)
-        print("Feature enabled:", Value)
+    Callback = function()
+        for _, enemy in ipairs(game.Workspace.Enemies.dungeon:GetChildren()) do
+            hit:FireServer(enemy, 100, true, "item6_rarity1")
+        end
+    end
+})
+        
     end
 })
 
 local MyButton = LeftGroupbox:AddButton({
-    Text = "Run Action",
+    Text = "Kill Mob",
     Func = function()
-        print("Action running!")
+        for _, enemy in ipairs(game.Workspace.Enemies.dungeon:GetChildren()) do
+            hit:FireServer(enemy, 1000, true, "item6_rarity1")
+        end
+    end
+})
     end
 })
