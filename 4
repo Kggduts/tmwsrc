@@ -1,0 +1,32 @@
+-- Create a basic window with common elements
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
+
+local Window = Library:CreateWindow({
+    Title = "My Script",
+    Footer = "v1.0.0",
+    Center = true,
+    AutoShow = true
+})
+
+local MainTab = Window:AddTab("Main", "home")
+local SettingsTab = Window:AddTab("Settings", "settings")
+
+-- Add a groupbox to the left side
+local LeftGroupbox = MainTab:AddLeftGroupbox("Features")
+
+-- Add toggles, buttons, sliders
+local MyToggle = LeftGroupbox:AddToggle("MyToggle", {
+    Text = "Enable Feature",
+    Default = false,
+    Tooltip = "Enables the main feature",
+    Callback = function(Value)
+        print("Feature enabled:", Value)
+    end
+})
+
+local MyButton = LeftGroupbox:AddButton({
+    Text = "Run Action",
+    Func = function()
+        print("Action running!")
+    end
+})
