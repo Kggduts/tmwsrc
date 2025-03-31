@@ -47,7 +47,7 @@ local Toggle = Tab:CreateToggle({
        _G.kill = bool
         while _G.kill do
             for _, enemy in ipairs(game.Workspace.Enemies.dungeon:GetChildren()) do
-                hit:FireServer(enemy, 10000, true, "item6_rarity1")
+                hit:FireServer(enemy, 1000, true, "item6_rarity1")
             end
             wait(0.1)
         end
